@@ -1,4 +1,4 @@
-local BASE_URL = "https://raw.githubusercontent.com/crowleybaleia-dot/Ayanokoji/main/ayanokoji_SS/"
+local BASE_URL = "https://raw.githubusercontent.com/crowleybaleia-dot/Ayanokoji/main/ayanokoji_clean/"
 
 local function fetch(path)
     local ok, result = pcall(game.HttpGet, game, BASE_URL .. path)
