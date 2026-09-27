@@ -1,7 +1,6 @@
 # Ayanokoji UI Library
 
-UI library para Roblox exploits. Baseada em Lua, compatível com executores UNC completos (Potassium, Xeno, etc.).
-
+UI library Project rain niggas
 ## Uso rápido
 
 ```lua
@@ -232,6 +231,6 @@ Para customizar:
 Library.ToggleKeybind = aztup_options["meu_keybind"]
 ```
 
-## Notas sobre as fontes
+## Notas sobre as fontes ( quebrado )
 
-Na primeira execução o loader baixa automaticamente as fontes Lexend do GitHub e salva em `Ayanokoji/fonts/` na workspace do executor. Nas execuções seguintes usa o cache local. Se o executor não suportar `writefile` com binários, a lib usa Gotham como fallback silencioso.
+Na primeira execução o loader baixa automaticamente as fontes Lexend do GitHub e salva em `Ayanokoji/fonts/` na workspace do executor. Nas execuções seguintes usa o cache local. Se o executor não suportar `writefile` com binários, a lib usa Gotham como fallback silencioso. 
