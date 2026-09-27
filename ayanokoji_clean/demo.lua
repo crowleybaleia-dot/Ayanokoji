@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/crowleybaleia-dot/Ayanokoji/main/ayanokoji_SS/init.lua"
+    "https://raw.githubusercontent.com/crowleybaleia-dot/Ayanokoji/main/ayanokoji_clean/init.lua"
 ))()
 
 local Window = Library:CreateWindow({
