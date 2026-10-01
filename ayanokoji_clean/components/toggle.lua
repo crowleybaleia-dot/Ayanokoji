@@ -485,6 +485,10 @@ end
 			task.defer(UpdateKeybindFrameSize)
 		end
 
+		local function chk(tag)
+			print("[DBG] chk", tag, pcall(function() return ContainerLabel.Parent end))
+		end
+
 		function KeyPicker:Update()
 		    if Info.NoUI then return end
 
@@ -515,7 +519,9 @@ end
 		        print("[DBG] Value/Info.Text types:", typeof(KeyPicker.Value), typeof(Info.Text))
 		        error(errText, 0)
 		    end
+		    chk("A apos Text")
 		    local x, _ = Library:GetLexendTextBounds(ContainerLabel.Text, lexend.regular, 16)
+		    chk("B apos GetTextBounds")
 		    ContainerLabel.LayoutOrder = -x
 		    ContainerLabel.TextColor3 = State and Library.AccentColor or Library.FontColor
 		    Library.RegistryMap[ContainerLabel].Properties.TextColor3 = State and 'AccentColor' or 'FontColor'
@@ -606,6 +612,7 @@ end
 			Library.RegistryMap[ContainerLabel].KEYBINDLABEL = true;
 			Library.RegistryMap[ContainerLabel].Properties.TextColor3 = State and 'AccentColor' or 'FontColor';
 
+			chk("C fim Update")
 			QueueKeybindFrameSize()
 		end;
 
@@ -660,8 +667,11 @@ end;
 				end
 			end
 
+			chk("D DoClick apos SetValue")
 			Library:SafeCallback(KeyPicker.Callback, KeyPicker.Toggled)
+			chk("E apos Callback")
 			Library:SafeCallback(KeyPicker.Clicked, KeyPicker.Toggled)
+			chk("F antes 2o Update")
 			self:Update()
 		end
 
