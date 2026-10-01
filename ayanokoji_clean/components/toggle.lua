@@ -485,10 +485,6 @@ end
 			task.defer(UpdateKeybindFrameSize)
 		end
 
-		local function chk(tag)
-			print("[DBG] chk", tag, pcall(function() return ContainerLabel.Parent end))
-		end
-
 		function KeyPicker:Update()
 		    if Info.NoUI then return end
 
@@ -506,22 +502,8 @@ end
 			end;
 
 		    
-		    print("[DBG] Update identity:", getthreadidentity and getthreadidentity() or "sem getthreadidentity")
-		    print("[DBG] traceback:", debug.traceback())
-		    print("[DBG] v2 pcall ativo")
-		    local okText, errText = pcall(function()
-		        ContainerLabel.Text = string.format('[%s]: %s', KeyPicker.Value, Info.Text)
-		    end)
-		    if not okText then
-		        print("[DBG] Text FAIL:", errText)
-		        print("[DBG] Parent:", pcall(function() return ContainerLabel.Parent end))
-		        print("[DBG] Visible:", pcall(function() return ContainerLabel.Visible end))
-		        print("[DBG] Value/Info.Text types:", typeof(KeyPicker.Value), typeof(Info.Text))
-		        error(errText, 0)
-		    end
-		    chk("A apos Text")
+		    ContainerLabel.Text = string.format('[%s]: %s', KeyPicker.Value, Info.Text)
 		    local x, _ = Library:GetLexendTextBounds(ContainerLabel.Text, lexend.regular, 16)
-		    chk("B apos GetTextBounds")
 		    ContainerLabel.LayoutOrder = -x
 		    ContainerLabel.TextColor3 = State and Library.AccentColor or Library.FontColor
 		    Library.RegistryMap[ContainerLabel].Properties.TextColor3 = State and 'AccentColor' or 'FontColor'
@@ -612,7 +594,6 @@ end
 			Library.RegistryMap[ContainerLabel].KEYBINDLABEL = true;
 			Library.RegistryMap[ContainerLabel].Properties.TextColor3 = State and 'AccentColor' or 'FontColor';
 
-			chk("C fim Update")
 			QueueKeybindFrameSize()
 		end;
 
@@ -667,11 +648,8 @@ end;
 				end
 			end
 
-			chk("D DoClick apos SetValue")
 			Library:SafeCallback(KeyPicker.Callback, KeyPicker.Toggled)
-			chk("E apos Callback")
 			Library:SafeCallback(KeyPicker.Clicked, KeyPicker.Toggled)
-			chk("F antes 2o Update")
 			self:Update()
 		end
 
