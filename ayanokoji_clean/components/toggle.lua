@@ -504,7 +504,16 @@ end
 		    
 		    print("[DBG] Update identity:", getthreadidentity and getthreadidentity() or "sem getthreadidentity")
 		    print("[DBG] traceback:", debug.traceback())
-		    ContainerLabel.Text = string.format('[%s]: %s', KeyPicker.Value, Info.Text)
+		    local okText, errText = pcall(function()
+		        ContainerLabel.Text = string.format('[%s]: %s', KeyPicker.Value, Info.Text)
+		    end)
+		    if not okText then
+		        print("[DBG] Text FAIL:", errText)
+		        print("[DBG] Parent:", pcall(function() return ContainerLabel.Parent end))
+		        print("[DBG] Visible:", pcall(function() return ContainerLabel.Visible end))
+		        print("[DBG] Value/Info.Text types:", typeof(KeyPicker.Value), typeof(Info.Text))
+		        error(errText, 0)
+		    end
 		    local x, _ = Library:GetLexendTextBounds(ContainerLabel.Text, lexend.regular, 16)
 		    ContainerLabel.LayoutOrder = -x
 		    ContainerLabel.TextColor3 = State and Library.AccentColor or Library.FontColor
