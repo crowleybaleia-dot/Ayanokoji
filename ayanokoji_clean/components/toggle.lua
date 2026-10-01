@@ -504,6 +504,7 @@ end
 		    
 		    print("[DBG] Update identity:", getthreadidentity and getthreadidentity() or "sem getthreadidentity")
 		    print("[DBG] traceback:", debug.traceback())
+		    print("[DBG] v2 pcall ativo")
 		    local okText, errText = pcall(function()
 		        ContainerLabel.Text = string.format('[%s]: %s', KeyPicker.Value, Info.Text)
 		    end)
