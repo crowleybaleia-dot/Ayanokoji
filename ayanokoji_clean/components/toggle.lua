@@ -1,6 +1,3 @@
-
-
-
 --@ signal inline
 local signal = {}
 signal.__index = signal
@@ -505,6 +502,8 @@ end
 			end;
 
 		    
+		    print("[DBG] Update identity:", getthreadidentity and getthreadidentity() or "sem getthreadidentity")
+		    print("[DBG] traceback:", debug.traceback())
 		    ContainerLabel.Text = string.format('[%s]: %s', KeyPicker.Value, Info.Text)
 		    local x, _ = Library:GetLexendTextBounds(ContainerLabel.Text, lexend.regular, 16)
 		    ContainerLabel.LayoutOrder = -x
